@@ -1,0 +1,27 @@
+{
+  "name": "url-shortening-api",
+  "version": "1.0.0",
+  "description": "Frontend Mentor challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TraekWells/url-shortening-api.git"
+  },
+  "author": "Traek Wells",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TraekWells/url-shortening-api/issues"
+  },
+  "homepage": "https://github.com/TraekWells/url-shortening-api#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "browser-sync": "^2.26.7",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2"
+  }
+}

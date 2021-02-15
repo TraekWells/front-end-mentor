@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700&display=swap");
+
+// Variables
+$color-grayish-blue-lightest: hsl(240, 78%, 98%);
+$color-grayish-blue-light: hsl(234, 14%, 74%);
+$color-grayish-blue: hsl(233, 13%, 49%);
+$color-grayish-blue-dark: hsl(232, 13%, 33%);
+$breakpoint-tablet: 50em;
+$breakpoint-mobile: 35em;
+
+// Mixins
+@mixin gradient($direction) {
+  background-image: linear-gradient(
+    to $direction,
+    hsl(236, 72%, 79%),
+    hsl(237, 63%, 64%)
+  );
+}
+
+%box-shadow {
+  box-shadow: 0 0.8rem 1rem 0.8rem hsla(237, 63%, 64%, 0.05);
+}
+
+html {
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $color-grayish-blue-lightest;
+  position: relative;
+  height: 100%;
+  font-family: "Montserrat";
+  overflow-x: hidden;
+  padding: 1.5rem;
+  // min-width: 36.8rem;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    overflow-x: hidden;
+    padding: 1rem;
+  }
+}
+
+h1 {
+  color: $color-grayish-blue-dark;
+  text-align: center;
+  padding: 5rem 0;
+  font-size: 3.3rem;
+}
+
+p {
+  color: $color-grayish-blue-dark;
+  font-size: 1.5rem;
+}
+
+.background {
+  position: absolute;
+  z-index: -1;
+
+  &__top {
+    top: 0;
+    right: 0;
+    // height: 4rem;
+  }
+
+  &__bottom {
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+
+  &__text {
+    color: $color-grayish-blue-light;
+    font-size: 1.5rem;
+  }
+
+  &__toggle {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+
+    &:checked + .toggle-container__label {
+      &::after {
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  &__label {
+    position: relative;
+    cursor: pointer;
+    width: 7rem;
+    height: 4rem;
+    @include gradient(right);
+    border-radius: 6rem;
+    margin: 0 2rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: #fff;
+      height: 3rem;
+      width: 3rem;
+      border-radius: 50%;
+      top: 0.5rem;
+      left: 0.5rem;
+      transition: 0.2s;
+    }
+  }
+}
+
+.button {
+  display: block;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  padding: 1.5rem 1rem;
+  text-decoration: none;
+  margin-top: 3rem;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  border: 1px solid transparent;
+  transition: 0.2s ease all;
+
+  &--primary {
+    @include gradient(right);
+    color: #ffffff;
+
+    &:hover {
+      color: hsl(237, 63%, 64%);
+      background: transparent;
+      border: 1px solid $color-grayish-blue-dark;
+    }
+  }
+
+  &--white {
+    background-color: #ffffff;
+    color: hsl(237, 63%, 64%);
+
+    &:hover {
+      color: #ffffff;
+      background: transparent;
+      border: 1px solid #ffffff;
+    }
+  }
+}
+
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  max-width: 100rem;
+  justify-content: center;
+  margin: 0 auto;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rule {
+    background-color: $color-grayish-blue-light;
+    width: 100%;
+    height: 1px;
+    border: none;
+    margin: 0;
+    opacity: 0.4;
+  }
+
+  &__card {
+    background-color: #ffffff;
+    padding: 3rem;
+    flex-basis: 33%;
+    text-align: center;
+    height: 37rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 26rem;
+    max-width: 26rem;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      width: 20rem;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+    }
+
+    h2,
+    h3 {
+      color: $color-grayish-blue-dark;
+      margin-bottom: 2.5rem;
+    }
+
+    p {
+      margin: 1.7rem 0;
+    }
+
+    &:nth-child(1) {
+      border-radius: 1rem 0 0 1rem;
+      align-self: center;
+      @extend %box-shadow;
+
+      @media screen and (max-width: $breakpoint-tablet) {
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+      }
+    }
+    &:nth-child(2) {
+      border-radius: 1rem;
+      @include gradient(bottom right);
+      @media screen and (max-width: $breakpoint-tablet) {
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+      }
+    }
+    &:nth-child(3) {
+      border-radius: 0 1rem 1rem 0;
+      align-self: center;
+      @extend %box-shadow;
+      @media screen and (max-width: $breakpoint-tablet) {
+        border-radius: 1rem;
+      }
+    }
+
+    &--featured {
+      height: 41rem;
+      h2,
+      h3,
+      p {
+        color: #ffffff;
+      }
+
+      .rule {
+        background-color: #ffffff;
+      }
+    }
+  }
+
+  .dollar-sign {
+    font-size: 3rem;
+    margin-right: 0.5rem;
+  }
+
+  &__price {
+    font-size: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.attribution {
+  color: $color-grayish-blue-dark;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 10rem 0 3rem;
+}
+
+.attribution a {
+  color: $color-grayish-blue;
+}
