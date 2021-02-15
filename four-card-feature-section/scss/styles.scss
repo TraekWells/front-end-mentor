@@ -1,0 +1,174 @@
+// Variables
+$red: hsl(0, 78%, 62%);
+$cyan: hsl(180, 62%, 55%);
+$orange: hsl(34, 97%, 64%);
+$blue: hsl(212, 86%, 64%);
+
+$dark-blue: hsl(234, 12%, 34%);
+$medium-blue: hsl(229, 6%, 66%);
+$light-blue: hsl(0, 00%, 98%);
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Poppins", Helvetica, sans-serif;
+
+  @media screen and (max-width: 56.25em) {
+    font-size: 58%;
+  }
+}
+
+body {
+  background-color: $light-blue;
+}
+
+p {
+  color: $medium-blue;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.attribution {
+  margin: 10rem 0 3rem;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+.container {
+  max-width: 125rem;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin: 9rem 0 6rem;
+
+  &__intro {
+    max-width: 60rem;
+    margin: 0 auto;
+
+    p {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+h1 {
+  font-size: 3.4rem;
+  color: $dark-blue;
+  .light {
+    font-weight: 200;
+  }
+  .strong {
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 26.56em) {
+    font-size: 3rem;
+  }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 2.5rem;
+
+  @media screen and (max-width: 56.25em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 26.56em) {
+    display: block;
+  }
+
+  .card {
+    border-radius: 0.8rem;
+    box-shadow: 0 0.6rem 1rem 0.3rem rgba($dark-blue, 0.1),
+      0 1rem 2rem 0.2rem rgba($medium-blue, 0.07);
+    background-color: #ffffff;
+    padding: 3rem;
+    min-height: 25rem;
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (max-width: 56.25em) {
+      padding: 2.5rem;
+    }
+
+    @media screen and (max-width: 26.56em) {
+      margin-bottom: 2rem;
+    }
+
+    &__title {
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+      color: $dark-blue;
+    }
+
+    &__content {
+      line-height: 1.9;
+    }
+
+    &__icon {
+      text-align: right;
+      margin: 2.5rem 0 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      top: 0;
+      height: 0.4rem;
+      left: 0;
+      right: 0;
+    }
+
+    &.cyan::before {
+      background-color: $cyan;
+    }
+    &.orange::before {
+      background-color: $orange;
+    }
+    &.blue::before {
+      background-color: $blue;
+    }
+    &.red::before {
+      background-color: $red;
+    }
+
+    &:nth-child(1) {
+      grid-column: 1 / 2;
+      grid-row: 1 / -1;
+      align-self: center;
+
+      @media screen and (max-width: 56.25em) {
+        grid-column: auto;
+        grid-row: auto;
+        align-self: auto;
+      }
+    }
+
+    &:nth-child(4) {
+      grid-row: 1 / -1;
+      grid-column: 3 / -1;
+      align-self: center;
+
+      @media screen and (max-width: 56.25em) {
+        grid-column: auto;
+        grid-row: auto;
+        align-self: auto;
+      }
+    }
+  }
+}
